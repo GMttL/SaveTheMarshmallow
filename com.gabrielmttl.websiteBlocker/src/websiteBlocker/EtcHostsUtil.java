@@ -1,24 +1,37 @@
+package websiteBlocker;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public final class WebsiteBlocker {
+/**
+ * This class ...
+ *
+ * <p>
+ *     Handles all things related to the /etc/hosts file
+ *     or C:\Windows\System32\drivers\etc\hosts in case of windows
+ *     systems.
+ *
+ * @aythor Gabriel Mititelu
+ * </p>
+ */
+public final class EtcHostsUtil {
 
-    private static final WebsiteBlocker instance = new WebsiteBlocker();
+    private static final EtcHostsUtil instance = new EtcHostsUtil();
 
     private static String OS;
     private String hostFile;
 
 
-    private WebsiteBlocker() {
+    private EtcHostsUtil() {
 
         OS = System.getProperty("os.name").toLowerCase();
         if (OS.contains("win")) {
-            hostFile = "C:\\Windows\\System32\\drivers\\etc\\hostsTestFile";
+            hostFile = "C:\\Windows\\System32\\drivers\\etc\\hosts";
         }
         else if (OS.contains("mac") || OS.contains("nux")) {
-            hostFile = "/etc/hostsTestFile"; // TODO: change this line to point to /etc/hosts
+            hostFile = "hostsTestFile"; // TODO: change this line to point to /etc/hosts
         }
         else {
             // unknown OS. We cannot perform action.
@@ -27,7 +40,7 @@ public final class WebsiteBlocker {
 
     }
 
-    public static WebsiteBlocker getInstance() {
+    public static EtcHostsUtil getInstance() {
         /*
             Returns null in case of unknown or unsupported Operating Systems.
 
@@ -50,7 +63,7 @@ public final class WebsiteBlocker {
             Files.write(Paths.get(hostFile), ("\n0.0.0.0 " + url).getBytes(), StandardOpenOption.APPEND);
             return true;
         } catch (IOException e) {
-            System.err.println("WebsiteBlocker.blockWebsite -- Could not write to host file.");
+            System.err.println("websiteBlocker.EtcHostsUtil.blockWebsite -- Could not write to host file.");
         }
         return false;
     }
@@ -74,11 +87,11 @@ public final class WebsiteBlocker {
 
             return tempFile.renameTo(inputFile);
         } catch (FileNotFoundException e) {
-            System.err.println("WebsiteBlocker.unblockWebsite -> could not find the file to open for reading. " +
+            System.err.println("websiteBlocker.EtcHostsUtil.unblockWebsite -> could not find the file to open for reading. " +
                     "hostFile location corrupt or non-existent.");
             return false;
         } catch (IOException e) {
-            System.err.println("WebsiteBlocker.unblockWebsite -> could not open file for writing.");
+            System.err.println("websiteBlocker.EtcHostsUtil.unblockWebsite -> could not open file for writing.");
             return false;
         }
 
