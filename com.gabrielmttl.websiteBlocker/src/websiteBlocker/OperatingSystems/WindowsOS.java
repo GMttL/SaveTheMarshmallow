@@ -2,6 +2,8 @@ package websiteBlocker.OperatingSystems;
 
 import websiteBlocker.DNSFlushingBehaviour;
 
+import java.io.IOException;
+
 /**
  * This class...
  * <p>
@@ -28,7 +30,19 @@ public final class WindowsOS implements DNSFlushingBehaviour {
 
     @Override
     public boolean DNSflush() {
-        // TODO: implement
+        return execute("ipconfig/flushdns");
+    }
+
+    private boolean execute(String command) {
+        String [] args = new String[] {"cmd.exe", "/c", command};
+        Runtime rt = Runtime.getRuntime();
+        try {
+            rt.exec(args);
+            return true;
+        } catch (IOException e) {
+            System.err.println("Windows could not execute cmd.exe command.");
+        }
+
         return false;
     }
 }
