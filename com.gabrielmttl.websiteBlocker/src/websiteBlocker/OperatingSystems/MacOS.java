@@ -10,7 +10,6 @@ import java.io.InputStreamReader;
  * This class...
  * <p>
  *     Helps us communicate with the underlying system (Mac OS).
- *     // TODO: decide how many versions of OS X you'll support
  * </p>
  *
  * @author Gabriel Mititelu

@@ -2,28 +2,29 @@ package websiteBlocker;
 
 import java.util.ArrayList;
 
-
 /**
  * This class ...
  *
  * <p>
- *      Singleton.
  *      To be used as a single point of entry for the module.
- *
  * </p>
  *
  * @author Gabriel Mititelu
  */
 public final class WebsiteBlockerFacade {
+    // TODO: Preferably the app returns the system back to normal when it exits, however, if that's not possible or dangerous, will have to store the blocked urls on disk and retrieve them at start time.
     private ArrayList<String> urls;
+    private WebsiteBlocker blocker;
 
     private static WebsiteBlockerFacade facade = null;
 
     private WebsiteBlockerFacade() {
+        // TODO: Inject bean with Spring
         urls = new ArrayList<>();
+
     }
 
-    public WebsiteBlockerFacade getInstance() {
+    public static WebsiteBlockerFacade getInstance() {
         if (facade == null) {
             facade = new WebsiteBlockerFacade();
         }
@@ -31,13 +32,32 @@ public final class WebsiteBlockerFacade {
         return facade;
     }
 
+    /**
+     *
+     * @param url must be prefixed with http or https.
+     *            will return false otherwise.
+     *
+     * @return true if website was blocked successfully.
+     */
+
     public boolean block(String url) {
+        if (url.contains("http://") || url.contains("https://")) {
+            boolean blocked = blocker.blockWebsite(url);
+            if (blocked) {
+                urls.add(url);
+                return true;
+            }
+        }
         return false;
     }
 
     public boolean unblock(String url) {
-        return false;
+        boolean unblocked = blocker.unblockWebsite(url);
+
+        if (unblocked) { return true; }
+        else { return false; }
     }
+
 
     public boolean unblockAll() {
 
@@ -53,9 +73,13 @@ public final class WebsiteBlockerFacade {
         return true;
     }
 
-    private boolean isValidURL(String url) {
-        return false;
+    /**
+     * This method returns a shallow copy of an array list of strings.
+     *
+     * @return shallow copy of the list of urls.
+     */
+    public ArrayList<String> getUrls() {
+        return new ArrayList<>(urls);
     }
-
 
 }

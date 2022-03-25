@@ -58,6 +58,7 @@ public final class EtcHostsUtil implements WebsiteBlocker {
     }
 
     public boolean blockWebsite(String url) {
+        url = formatURL(url);
         try {
             Files.write(Paths.get(hostFile), ("\n0.0.0.0 " + url).getBytes(), StandardOpenOption.APPEND);
             return true;
@@ -70,6 +71,7 @@ public final class EtcHostsUtil implements WebsiteBlocker {
     public boolean unblockWebsite(String url) {
         File inputFile = new File(hostFile);
         File tempFile = new File(hostFile + ".tmp");
+        url = formatURL(url);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(hostFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -94,5 +96,24 @@ public final class EtcHostsUtil implements WebsiteBlocker {
             return false;
         }
 
+    }
+
+    /**
+     * This method formats the url for the /etc/hosts file.
+     *
+     * @param url HTTP:// or HTTPS:// + name.domain.
+     *
+     * @return www.name.domain
+     */
+    private String formatURL(String url) {
+        StringBuilder formattedURL = new StringBuilder("www.");
+        if (url.contains("http")) {
+            formattedURL.append(url.substring("http://".length() - 1));
+        }
+        else if (url.contains("https")) {
+            formattedURL.append(url.substring("https://".length() - 1));
+        }
+
+        return formattedURL.toString();
     }
 }
