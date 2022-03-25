@@ -1,3 +1,5 @@
+package websiteBlocker;
+
 import org.testng.annotations.Test;
 import websiteBlocker.EtcHostsUtil;
 

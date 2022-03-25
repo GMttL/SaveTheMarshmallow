@@ -16,6 +16,7 @@ import java.nio.file.StandardOpenOption;
  * </p>
  */
 public final class EtcHostsUtil implements WebsiteBlocker {
+    private final String IP_ADDRESS = "0.0.0.0";
 
     private static final EtcHostsUtil instance = new EtcHostsUtil();
 
@@ -29,7 +30,7 @@ public final class EtcHostsUtil implements WebsiteBlocker {
             hostFile = "C:\\Windows\\System32\\drivers\\etc\\hosts";
         }
         else if (OS.contains("mac") || OS.contains("nux")) {
-            hostFile = "/etc/hosts";
+            hostFile = "hostsTestFile"; //TODO: change to point to the actual file
         }
         else {
             // unknown OS. We cannot perform action.
@@ -43,7 +44,7 @@ public final class EtcHostsUtil implements WebsiteBlocker {
 
             Supported Operating Systems:
             - Windows since year 2000+
-            - Mac OS
+            - OS X
             - Most Linux Distributions (this may be a source of errors in small or niche distributions that change
                                         the location of system files)
          */
@@ -54,21 +55,53 @@ public final class EtcHostsUtil implements WebsiteBlocker {
         return null;
     }
 
+    /**
+     *
+     * @param url must be prefixed with http or https
+     *
+     * @return false if file is not prefixed with http or https
+     *          false if we cannot write to file
+     *          true if we wrote the correct url to file.
+     */
+
     public boolean blockWebsite(String url) {
-        url = formatURL(url);
+
+        if (url.contains("http") || url.contains("https")) {
+            url = formatURL(url);
+        }
+        else {return false;}
+
         try {
-            Files.write(Paths.get(hostFile), ("\n0.0.0.0 " + url).getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get(hostFile), ("\n" + IP_ADDRESS + " " + url).getBytes(), StandardOpenOption.APPEND);
             return true;
         } catch (IOException e) {
             System.err.println("websiteBlocker.EtcHostsUtil.blockWebsite -- Could not write to host file.");
         }
+
         return false;
     }
+
+    /**
+     *
+     * @param url must start with http or https otherwise hell with ensue.
+     *            If you get some weird trying to reference null value this is probably the cause.
+     *
+     *            formatURL returns null if the url passed to it is not formatted properly.
+     *
+     * @return true if we can go through the file successfully
+     *         false if any errors occur when manipulating the file.
+     *         false if the url passed to it does not contain http or https.
+     */
 
     public boolean unblockWebsite(String url) {
         File inputFile = new File(hostFile);
         File tempFile = new File(hostFile + ".tmp");
-        url = formatURL(url);
+
+        if (url.contains("http") || url.contains("https")) {
+            url = formatURL(url);
+        }
+        else { return false; }
+
         try {
             BufferedReader reader = new BufferedReader(new FileReader(hostFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -76,7 +109,7 @@ public final class EtcHostsUtil implements WebsiteBlocker {
             String currentLine;
 
             while ((currentLine = reader.readLine()) != null) {
-                if (currentLine.contains(url) && currentLine.contains("0.0.0.0") || currentLine.isEmpty()) continue;
+                if (currentLine.contains(url) && currentLine.contains(IP_ADDRESS) || currentLine.isEmpty()) continue;
                 writer.write(currentLine + System.getProperty("line.separator"));
             }
 
@@ -103,12 +136,14 @@ public final class EtcHostsUtil implements WebsiteBlocker {
      * @return www.name.domain
      */
     private String formatURL(String url) {
+        url = url.replaceAll("\\s", ""); // remove all possible whitespace
+
         StringBuilder formattedURL = new StringBuilder("www.");
-        if (url.contains("http")) {
-            formattedURL.append(url.substring("http://".length() - 1));
+        if (url.contains("https")) {
+            formattedURL.append(url.substring("https://".length()));
         }
-        else if (url.contains("https")) {
-            formattedURL.append(url.substring("https://".length() - 1));
+        else if (url.contains("http")) {
+            formattedURL.append(url.substring("http://".length()));
         }
 
         return formattedURL.toString();

@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 /**
  * This class...
  * <p>
- *     Helps us communicate with the underlying system (Mac OS).
+ *     Helps us communicate with the underlying system (OS X).
  * </p>
  *
  * @author Gabriel Mititelu
@@ -32,7 +32,7 @@ public final class MacOS implements DNSFlushingBehaviour {
     }
 
     /**
-     * @method Only works for OS X 10.12 and above.
+     * Only works for OS X 10.12 and above.
      *
      * @return true -- command could be executed. Does not guarantee efficacy.
      *         false -- could not execute due to internal reasons.

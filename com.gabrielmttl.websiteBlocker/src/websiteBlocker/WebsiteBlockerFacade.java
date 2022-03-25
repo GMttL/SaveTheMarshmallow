@@ -16,8 +16,8 @@ import java.util.ArrayList;
  */
 public final class WebsiteBlockerFacade {
     // TODO: Preferably the app returns the system back to normal when it exits, however, if that's not possible or dangerous, will have to store the blocked urls on disk and retrieve them at start time.
-    private ArrayList<String> urls;
-    private WebsiteBlocker blocker;
+    private final ArrayList<String> urls;
+    private final WebsiteBlocker blocker;
 
     private static WebsiteBlockerFacade facade = null;
 
@@ -44,13 +44,12 @@ public final class WebsiteBlockerFacade {
      */
 
     public boolean block(String url) {
-        if (url.contains("http://") || url.contains("https://")) {
-            boolean blocked = blocker.blockWebsite(url);
-            if (blocked) {
-                urls.add(url);
-                return true;
-            }
+
+        if (blocker.blockWebsite(url)) {
+            urls.add(url);
+            return true;
         }
+
         return false;
     }
 
@@ -58,22 +57,24 @@ public final class WebsiteBlockerFacade {
     public boolean unblock(String url) {
         boolean unblocked = blocker.unblockWebsite(url);
 
-        if (unblocked) { return true; }
-        else { return false; }
+        if (unblocked) {
+            urls.remove(url);
+        }
+
+        return unblocked;
     }
 
 
     public boolean unblockAll() {
+        ArrayList<String> urlsCopy = getUrls();
 
-        for (String url: urls) {
+        for (String url: urlsCopy) {
             boolean unblocked = unblock(url);
             if (!unblocked) {
                 System.err.println("Couldn't unblock all websites. current url: " + url);
                 return false;
             }
-            urls.remove(url);
         }
-
         return true;
     }
 
