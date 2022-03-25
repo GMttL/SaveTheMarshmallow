@@ -11,10 +11,23 @@ import websiteBlocker.DNSFlushingBehaviour;
  *
  * @author Gabriel Mititelu
  */
-public class LinuxOS implements DNSFlushingBehaviour {
+public final class LinuxOS implements DNSFlushingBehaviour {
+
+    private static LinuxOS os = null;
+
+    private LinuxOS() {}
+
+    public static LinuxOS getInstance() {
+        if (os == null) {
+            os = new LinuxOS();
+        }
+
+        return os;
+    }
 
     @Override
-    public boolean flush() {
-
+    public boolean DNSflush() {
+        // TODO: implement
+        return false;
     }
 }

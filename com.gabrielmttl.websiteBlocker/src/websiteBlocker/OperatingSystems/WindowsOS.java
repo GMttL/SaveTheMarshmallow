@@ -12,10 +12,23 @@ import websiteBlocker.DNSFlushingBehaviour;
  * @author Gabriel Mititelu
  */
 
-public class WindowsOS implements DNSFlushingBehaviour {
+public final class WindowsOS implements DNSFlushingBehaviour {
+
+    private static WindowsOS os = null;
+
+    private WindowsOS() {}
+
+    public static WindowsOS getInstance() {
+        if (os == null) {
+            os = new WindowsOS();
+        }
+
+        return os;
+    }
 
     @Override
-    public boolean flush() {
-
+    public boolean DNSflush() {
+        // TODO: implement
+        return false;
     }
 }

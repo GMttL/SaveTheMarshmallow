@@ -27,6 +27,7 @@ public final class EtcHostsUtil {
     private EtcHostsUtil() {
 
         OS = System.getProperty("os.name").toLowerCase();
+        System.out.println(OS);
         if (OS.contains("win")) {
             hostFile = "C:\\Windows\\System32\\drivers\\etc\\hosts";
         }

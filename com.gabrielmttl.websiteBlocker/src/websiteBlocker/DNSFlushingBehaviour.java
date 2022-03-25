@@ -11,5 +11,5 @@ package websiteBlocker;
  */
 public interface DNSFlushingBehaviour {
 
-    boolean flush();
+    boolean DNSflush();
 }
