@@ -9,14 +9,13 @@ import java.nio.file.StandardOpenOption;
  * This class ...
  *
  * <p>
- *     Handles all things related to the /etc/hosts file
- *     or C:\Windows\System32\drivers\etc\hosts in case of windows
- *     systems.
+ *     Handles all things related to the /etc/hosts file.
+ * </p>
  *
- * @aythor Gabriel Mititelu
+ * @author Gabriel Mititelu
  * </p>
  */
-public final class EtcHostsUtil {
+public final class EtcHostsUtil implements WebsiteBlocker {
 
     private static final EtcHostsUtil instance = new EtcHostsUtil();
 
@@ -32,7 +31,7 @@ public final class EtcHostsUtil {
             hostFile = "C:\\Windows\\System32\\drivers\\etc\\hosts";
         }
         else if (OS.contains("mac") || OS.contains("nux")) {
-            hostFile = "hostsTestFile"; // TODO: change this line to point to /etc/hosts
+            hostFile = "/etc/hosts";
         }
         else {
             // unknown OS. We cannot perform action.
@@ -59,7 +58,6 @@ public final class EtcHostsUtil {
     }
 
     public boolean blockWebsite(String url) {
-        // TODO: clear system dns cache as well to successfully block the website. Different responsibility. Need new class.
         try {
             Files.write(Paths.get(hostFile), ("\n0.0.0.0 " + url).getBytes(), StandardOpenOption.APPEND);
             return true;

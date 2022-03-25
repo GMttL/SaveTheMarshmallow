@@ -3,9 +3,9 @@ package websiteBlocker;
 /**
  * This interface...
  *
- * <p>
- *     Requests users implement flush() for their particular system.
- * </p>
+ *  <p>
+ *      Flushes local DNS cache.
+ *  </p>
  *
  * @author Gabriel Mititelu
  */
