@@ -1,5 +1,8 @@
 package websiteBlocker;
 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.util.ArrayList;
 
 /**
@@ -19,9 +22,9 @@ public final class WebsiteBlockerFacade {
     private static WebsiteBlockerFacade facade = null;
 
     private WebsiteBlockerFacade() {
-        // TODO: Inject bean with Spring
+        BeanFactory factory = new ClassPathXmlApplicationContext("websiteBlocker/resources/beans.xml");
+        blocker = (WebsiteBlocker) factory.getBean("blocker");
         urls = new ArrayList<>();
-
     }
 
     public static WebsiteBlockerFacade getInstance() {
@@ -50,6 +53,7 @@ public final class WebsiteBlockerFacade {
         }
         return false;
     }
+
 
     public boolean unblock(String url) {
         boolean unblocked = blocker.unblockWebsite(url);

@@ -24,9 +24,7 @@ public final class EtcHostsUtil implements WebsiteBlocker {
 
 
     private EtcHostsUtil() {
-
         OS = System.getProperty("os.name").toLowerCase();
-        System.out.println(OS);
         if (OS.contains("win")) {
             hostFile = "C:\\Windows\\System32\\drivers\\etc\\hosts";
         }
@@ -37,7 +35,6 @@ public final class EtcHostsUtil implements WebsiteBlocker {
             // unknown OS. We cannot perform action.
             OS = null;
         }
-
     }
 
     public static EtcHostsUtil getInstance() {
