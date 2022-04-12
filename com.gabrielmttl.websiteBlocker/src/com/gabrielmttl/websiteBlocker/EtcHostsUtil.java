@@ -30,7 +30,7 @@ public final class EtcHostsUtil implements WebsiteBlocker {
             hostFile = "C:\\Windows\\System32\\drivers\\etc\\hosts";
         }
         else if (OS.contains("mac") || OS.contains("nux")) {
-            hostFile = "src/hostsTestFile"; //TODO: change to point to the actual file
+            hostFile = "/etc/hosts";
         }
         else {
             // unknown OS. We cannot perform action.
