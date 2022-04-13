@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="com.gabrielmttl.websiteBlocker:jar">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="com.gabrielmttl.websiteBlocker.jar">
+      <element id="module-output" name="com.gabrielmttl.websiteBlocker" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-instrument-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-aspects-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-context-support-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-aop-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-expression-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-beans-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-jms-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-oxm-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-orm-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-jdbc-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-context-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/aopalliance-1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-core-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/commons-logging-1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-messaging-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-tx-5.2.3.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/lib/spring-test-5.2.3.RELEASE.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

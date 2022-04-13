@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SaveTheMarshmallow.iml" filepath="$PROJECT_DIR$/SaveTheMarshmallow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UI/UI.iml" filepath="$PROJECT_DIR$/UI/UI.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/com.gabrielmttl.websiteBlocker.iml" filepath="$PROJECT_DIR$/com.gabrielmttl.websiteBlocker/com.gabrielmttl.websiteBlocker.iml" />
     </modules>
   </component>

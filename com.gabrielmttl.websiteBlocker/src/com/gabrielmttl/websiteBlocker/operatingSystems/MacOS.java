@@ -39,9 +39,7 @@ public final class MacOS implements DNSFlushingBehaviour {
      */
     @Override
     public boolean DNSFlush() {
-        // TODO: remove this line and uncomment the original command.
-        return execute("sudo rm src/test.txt"); // testing purposes only. Application will need to be run as superuser. to fully test.
-        //return execute("sudo killall -HUP mDNSResponder");
+        return execute("sudo killall -HUP mDNSResponder");
     }
 
     private boolean execute(String command) {

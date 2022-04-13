@@ -3,5 +3,7 @@ module com.gabrielmttl.websiteBlocker {
     requires spring.context;
 
     opens com.gabrielmttl.websiteBlocker;
+
+
     exports com.gabrielmttl.websiteBlocker;
 }
