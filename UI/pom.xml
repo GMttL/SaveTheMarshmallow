@@ -65,7 +65,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui/com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui.HelloApplication
+                                com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui/com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui.SaveTheMarshmallowApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
