@@ -34,8 +34,6 @@ public class MainStageController {
 
     @FXML
     void addWebsiteButton(ActionEvent event) throws IOException {
-        // TODO: add button
-
         FXMLLoader fxmlLoader = new FXMLLoader(MainStageController.class.getResource("AddWebsiteStage-View.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 150);
         Stage stage = new Stage();

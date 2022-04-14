@@ -1,6 +1,7 @@
 package com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -9,13 +10,34 @@ public class AddWebsiteStageController {
 
     @FXML
     private TextField websiteTextField;
+    @FXML
+    private Label addLabel;
+
+    private final SaveTheMarshmallowModel model = SaveTheMarshmallowModel.getInstance();
+
+    @FXML
+    private void initialize(){
+        addLabel.setText("");
+    }
 
     @FXML
     public void blockWebsiteViewButton(KeyEvent keyEvent) {
-        // TODO: Implement Add website view functionality
-        // check textfield value is starts with https:// or http://
+        addLabel.setText("");
         if(keyEvent.getCode() == KeyCode.ENTER) {
-            System.out.println(websiteTextField.getText());
+            String url = websiteTextField.getText();
+
+            if (url.startsWith("http://") || url.startsWith("https://")) {
+                if (model.addWebsite(url)) {
+                    addLabel.setText("Added");
+                    websiteTextField.clear();
+                }
+                else {
+                    addLabel.setText(websiteTextField.getText() + " could not be added.");
+                }
+            }
+            else {
+                addLabel.setText("URL must begin with http:// or https://");
+            }
         }
     }
 }

@@ -21,13 +21,13 @@ public class SaveTheMarshmallowModel {
     private boolean toggle = false;
 
     // Makes class singleton
-    private final SaveTheMarshmallowModel instance = new SaveTheMarshmallowModel();
+    private static final SaveTheMarshmallowModel instance = new SaveTheMarshmallowModel();
 
     private SaveTheMarshmallowModel() {
         urls = new ArrayList<>();
     }
 
-    public SaveTheMarshmallowModel getInstance() {
+    public static SaveTheMarshmallowModel getInstance() {
         return instance;
     }
 
@@ -100,6 +100,5 @@ public class SaveTheMarshmallowModel {
         toggle = false;
         return true;
     }
-
 
 }
