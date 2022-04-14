@@ -3,7 +3,9 @@ module com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui {
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
+    requires com.gabrielmttl.websiteBlocker;
 
-    opens com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui to javafx.fxml;
+
     exports com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui;
+    opens com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui to javafx.fxml;
 }

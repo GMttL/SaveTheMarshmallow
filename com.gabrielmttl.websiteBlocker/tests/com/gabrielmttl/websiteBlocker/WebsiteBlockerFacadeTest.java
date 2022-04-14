@@ -1,6 +1,5 @@
 package com.gabrielmttl.websiteBlocker;
 
-import com.gabrielmttl.websiteBlocker.WebsiteBlockerFacade;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,15 +33,6 @@ class WebsiteBlockerFacadeTest {
 
         String url3 = "https://facebook.com";
         assertTrue(WebsiteBlockerFacade.getInstance().unblock(url3), "facade.unblock does not handle basic use case correctly " + url3);
-    }
-
-    @Test
-    void unblockAll() {
-        WebsiteBlockerFacade blocker = WebsiteBlockerFacade.getInstance();
-        block();
-        boolean unblockedAll = blocker.unblockAll();
-        assertTrue(unblockedAll, "facade.unblockAll could not unblock all websites");
-        assertEquals(0, blocker.getUrls().size(), "facade.unblockAll could not clear array");
     }
 
 }
