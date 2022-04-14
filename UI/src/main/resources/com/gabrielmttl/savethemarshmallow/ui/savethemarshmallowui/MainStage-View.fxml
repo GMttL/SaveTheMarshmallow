@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -10,6 +9,7 @@
 <?import org.controlsfx.control.ToggleSwitch?>
 
 
+<?import org.controlsfx.control.SearchableComboBox?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="360" prefWidth="640.0"
       xmlns:fx="http://javafx.com/fxml"
@@ -17,8 +17,8 @@
     <children>
         <VBox layoutX="23.0" layoutY="22.0" prefHeight="330.0" prefWidth="228.0">
             <children>
-                <TextField text="Search" />
-                <ListView prefHeight="308.0" prefWidth="228.0" />
+                <SearchableComboBox fx:id="searchBox" />
+                <ListView fx:id="listView" prefHeight="308.0" prefWidth="228.0" />
             </children>
         </VBox>
         <ToggleSwitch fx:id="toggleSwitch" layoutX="83.0" layoutY="360.0" text="Off/On" />

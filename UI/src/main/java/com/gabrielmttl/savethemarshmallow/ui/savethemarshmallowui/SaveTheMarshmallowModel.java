@@ -3,6 +3,7 @@ package com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui;
 import com.gabrielmttl.websiteBlocker.WebsiteBlockerFacade;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Central repo of data in the app.
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class SaveTheMarshmallowModel {
 
     private final WebsiteBlockerFacade blocker = WebsiteBlockerFacade.getInstance();
-    private ArrayList<String> urls;
+    private final ArrayList<String> urls;
 
     /**
      * Flag representing whether block is ON or OFF.
@@ -65,11 +66,14 @@ public class SaveTheMarshmallowModel {
      * Removes all websites from list.
      */
     public boolean removeAllWebsites() {
-       for (String url: urls) {
+
+        // Make sure you iterate over an immutable array
+        ArrayList<String> urls = getUrls();
+        for (String url: urls) {
            if (!removeWebsite(url)) {
                return false;
            }
-       }
+        }
 
        return true;
     }
@@ -101,4 +105,12 @@ public class SaveTheMarshmallowModel {
         return true;
     }
 
+
+    /**
+     * Returns a shallow copy of the url list.
+     *
+     */
+    public ArrayList<String> getUrls() {
+        return (ArrayList<String>) urls.clone();
+    }
 }
