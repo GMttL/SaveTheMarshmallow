@@ -8,6 +8,8 @@
 
 
 <?import org.controlsfx.control.ToggleSwitch?>
+
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="360" prefWidth="640.0"
       xmlns:fx="http://javafx.com/fxml"
@@ -19,12 +21,12 @@
                 <ListView prefHeight="308.0" prefWidth="228.0" />
             </children>
         </VBox>
-        <ToggleSwitch fx:id="toggleSwitch" layoutX="82.0" layoutY="360.0" text="Off/On" />
+        <ToggleSwitch fx:id="toggleSwitch" layoutX="83.0" layoutY="360.0" text="Off/On" />
         <VBox alignment="TOP_CENTER" layoutX="313.0" layoutY="108.0" prefHeight="144.0" prefWidth="247.0" spacing="40.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="282.0" text="Add" />
-                <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="282.0" text="Remove" />
-                <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="282.0" text="Remove All" />
+                <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="282.0" text="Add" onAction="#addWebsiteButton" />
+                <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="282.0" text="Remove" onAction="#removeWebsiteButton"/>
+                <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="282.0" text="Remove All" onAction="#removeAllWebsitesButton"/>
             </children>
         </VBox>
     </children>

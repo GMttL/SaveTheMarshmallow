@@ -3,6 +3,7 @@ package com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,7 +19,11 @@ public class SaveTheMarshmallowApplication extends Application {
         stage.setMaxWidth(640.0);
         stage.setResizable(false);
 
+        //Customise stage
         stage.setTitle("Save The Marshmallow");
+        // TODO: add application icon
+
+        // Set and Show Scene
         stage.setScene(scene);
         stage.show();
     }
