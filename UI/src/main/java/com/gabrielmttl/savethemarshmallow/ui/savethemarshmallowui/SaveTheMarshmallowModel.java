@@ -3,7 +3,6 @@ package com.gabrielmttl.savethemarshmallow.ui.savethemarshmallowui;
 import com.gabrielmttl.websiteBlocker.WebsiteBlockerFacade;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Central repo of data in the app.

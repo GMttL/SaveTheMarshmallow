@@ -4,6 +4,5 @@ module com.gabrielmttl.websiteBlocker {
 
     opens com.gabrielmttl.websiteBlocker;
 
-
     exports com.gabrielmttl.websiteBlocker;
 }

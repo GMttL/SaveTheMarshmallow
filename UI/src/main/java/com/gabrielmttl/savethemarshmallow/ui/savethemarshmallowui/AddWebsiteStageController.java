@@ -38,6 +38,8 @@ public class AddWebsiteStageController {
             else {
                 addLabel.setText("URL must begin with http:// or https://");
             }
+            websiteTextField.setText("https://");
         }
+
     }
 }
