@@ -16,6 +16,8 @@ import java.io.IOException;
 
 public class MainStageController {
 
+    // HANDLES
+
     private final SaveTheMarshmallowModel model = SaveTheMarshmallowModel.getInstance();
 
     @FXML
@@ -27,8 +29,14 @@ public class MainStageController {
     @FXML
     private ListView<String> listView;
 
+
+    // METHODS
+
     @FXML
     private void initialize(){
+
+        //TODO: Create error/failure stage to show when an operation fails using the return values from the MODEL.
+
         refreshListView();
 
         // ToggleSwitch Listener
